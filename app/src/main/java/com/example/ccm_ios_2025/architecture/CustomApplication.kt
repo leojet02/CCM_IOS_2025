@@ -3,6 +3,7 @@ package com.example.ccm_ios_2025.architecture
 import android.app.Application
 import androidx.room.Room
 import com.example.ccm_ios_2025.data.local.CustomRoomDatabase
+import com.example.ccm_ios_2025.firebase.RemoteConfigManager
 
 
 class CustomApplication : Application() {
@@ -26,5 +27,6 @@ class CustomApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+        RemoteConfigManager.init()
     }
 }

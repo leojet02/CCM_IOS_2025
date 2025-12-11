@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "394003163438",
+    "project_id": "ccm-ios",
+    "storage_bucket": "ccm-ios.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:394003163438:android:b1530eec5f350b3f55b2bf",
+        "android_client_info": {
+          "package_name": "com.example.ccm_ios_2025"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZKSGhcV9iTm7K_Ssqn1HdfMTrZYr7RJ8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

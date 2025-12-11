@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.ccm_ios_2025.firebase.RemoteConfigManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -24,6 +25,16 @@ import kotlinx.coroutines.launch
 fun MainScreen(onButtonClick: () -> Unit) {
     val scope = rememberCoroutineScope()
     var clicked by remember { mutableStateOf(false) }
+
+    var claudeValue by remember { mutableStateOf(RemoteConfigManager.getClaudeValue()) }
+
+    LaunchedEffect(Unit) {
+        RemoteConfigManager.fetchAndActivate { isSuccess ->
+            if (isSuccess) {
+                claudeValue = RemoteConfigManager.getClaudeValue()
+            }
+        }
+    }
 
     Scaffold { innerPadding ->
         Column(
@@ -33,6 +44,15 @@ fun MainScreen(onButtonClick: () -> Unit) {
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+
+            // --- Texte Remote Config ---
+            Text(
+                text = if (claudeValue) "Claude is enabled!" else "Claude is disabled.",
+                fontSize = 20.sp,
+                color = MaterialTheme.colorScheme.primary
+            )
+
+            Spacer(modifier = Modifier.height(32.dp))
             Text(
                 text = "Bienvenue!", fontSize = 32.sp, color = MaterialTheme.colorScheme.primary
             )
